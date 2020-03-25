@@ -20,3 +20,4 @@ cmake ..
 make
 ./benchmark_bg_wkt_o2 -t $DIR/results/benchmark_bg_wkt_o2.csv
 ./benchmark_bg_wkt_o3 -t $DIR/results/benchmark_bg_wkt_o3.csv
+./benchmark_bg_wkt_unoptimized -t $DIR/results/benchmark_bg_wkt_unoptimized.csv

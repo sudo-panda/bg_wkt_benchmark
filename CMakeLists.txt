@@ -52,3 +52,7 @@ add_executable(benchmark_bg_wkt_o3 benchmark.cpp)
 set_target_properties(benchmark_bg_wkt_o3 PROPERTIES COMPILE_FLAGS "-O3")
 add_dependencies(benchmark_bg_wkt_o3 libcelero)
 target_link_libraries(benchmark_bg_wkt_o3 libcelero ${CELERO_EXTRA_LIBS})
+
+add_executable(benchmark_bg_wkt_unoptimized benchmark_unoptimized.cpp)
+add_dependencies(benchmark_bg_wkt_unoptimized libcelero)
+target_link_libraries(benchmark_bg_wkt_unoptimized libcelero ${CELERO_EXTRA_LIBS})
