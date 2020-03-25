@@ -56,13 +56,17 @@ CELERO_MAIN
 
 // Set fixed baseline of 1 us
 
-BASELINE_FIXED_F(wkt_more_sig, to_string, Fixture, 30, 1, 1);
+BASELINE_FIXED_F(wkt_more_sig, baseline, Fixture, 30, 1, 1)
+{}
 
-BASELINE_FIXED_F(wkt_less_sig, to_string, Fixture, 30, 1, 1);
+BASELINE_FIXED_F(wkt_less_sig, baseline, Fixture, 30, 1, 1)
+{}
 
-BASELINE_FIXED_F(to_wkt_more_sig, to_string, Fixture, 30, 1, 1);
+BASELINE_FIXED_F(to_wkt_more_sig, baseline, Fixture, 30, 1, 1)
+{}
 
-BASELINE_FIXED_F(to_wkt_less_sig, to_string, Fixture, 30, 1, 1);
+BASELINE_FIXED_F(to_wkt_less_sig, baseline, Fixture, 30, 1, 1)
+{}
 
 // Benchmarking to_string method
 
