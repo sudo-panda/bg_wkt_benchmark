@@ -20,7 +20,7 @@ struct Fixture : celero::TestFixture {
     std::vector<celero::TestFixture::ExperimentValue> v;
     std::size_t size = 5;
     for (std::size_t i = 0; i < size; i++) {
-      v.emplace_back(static_cast<int64_t>(pow(10, i)), static_cast<int64_t>(pow(10, size - i)));
+      v.emplace_back(static_cast<int64_t>(pow(10, i)), 0);
     }
 
     return v;
@@ -56,103 +56,103 @@ CELERO_MAIN
 
 // Set fixed baseline of 1 us
 
-BASELINE_FIXED_F(wkt_more_sig, baseline, Fixture, 30, 1, 1)
+BASELINE_FIXED_F(wkt_more_sig, baseline, Fixture, 0, 10, 1)
 {}
 
-BASELINE_FIXED_F(wkt_less_sig, baseline, Fixture, 30, 1, 1)
+BASELINE_FIXED_F(wkt_less_sig, baseline, Fixture, 0, 10, 1)
 {}
 
-BASELINE_FIXED_F(to_wkt_more_sig, baseline, Fixture, 30, 1, 1)
+BASELINE_FIXED_F(to_wkt_more_sig, baseline, Fixture, 0, 10, 1)
 {}
 
-BASELINE_FIXED_F(to_wkt_less_sig, baseline, Fixture, 30, 1, 1)
+BASELINE_FIXED_F(to_wkt_less_sig, baseline, Fixture, 0, 10, 1)
 {}
 
 // Benchmarking to_string method
 
-BENCHMARK_F(wkt_more_sig, to_string, Fixture, 30, 1) {
+BENCHMARK_F(wkt_more_sig, to_string, Fixture, 0, 10) {
   std::stringstream ss;
   ss<<bg::to_string::wkt(this->more_sig_data_);
   ss.str();
 }
 
-BENCHMARK_F(wkt_less_sig, to_string, Fixture, 30, 1) {
+BENCHMARK_F(wkt_less_sig, to_string, Fixture, 0, 10) {
   std::stringstream ss;
   ss<<bg::to_string::wkt(this->less_sig_data_);
   ss.str();
 }
 
-BENCHMARK_F(to_wkt_more_sig, to_string, Fixture, 30, 1) {
+BENCHMARK_F(to_wkt_more_sig, to_string, Fixture, 0, 10) {
   bg::to_string::to_wkt(this->more_sig_data_);
 }
 
-BENCHMARK_F(to_wkt_less_sig, to_string, Fixture, 30, 1) {
+BENCHMARK_F(to_wkt_less_sig, to_string, Fixture, 0, 10) {
   bg::to_string::to_wkt(this->less_sig_data_);
 }
 
 // Benchmarking lexical_cast method
 
-BENCHMARK_F(wkt_more_sig, lexical_cast, Fixture, 30, 1) {
+BENCHMARK_F(wkt_more_sig, lexical_cast, Fixture, 0, 10) {
   std::stringstream ss;
   ss<<bg::lexical_cast::wkt(this->more_sig_data_);
   ss.str();
 }
 
-BENCHMARK_F(wkt_less_sig, lexical_cast, Fixture, 30, 1) {
+BENCHMARK_F(wkt_less_sig, lexical_cast, Fixture, 0, 10) {
   std::stringstream ss;
   ss<<bg::lexical_cast::wkt(this->less_sig_data_);
   ss.str();
 }
 
-BENCHMARK_F(to_wkt_more_sig, lexical_cast, Fixture, 30, 1) {
+BENCHMARK_F(to_wkt_more_sig, lexical_cast, Fixture, 0, 10) {
   bg::lexical_cast::to_wkt(this->more_sig_data_);
 }
 
-BENCHMARK_F(to_wkt_less_sig, lexical_cast, Fixture, 30, 1) {
+BENCHMARK_F(to_wkt_less_sig, lexical_cast, Fixture, 0, 10) {
   bg::lexical_cast::to_wkt(this->less_sig_data_);
 }
 
 
 // Benchmarking stringstream with precision set method
 
-BENCHMARK_F(wkt_more_sig, ss_w_precision, Fixture, 30, 1) {
+BENCHMARK_F(wkt_more_sig, ss_w_precision, Fixture, 0, 10) {
   std::stringstream ss;
   ss<<bg::ss_w_precision::wkt(this->more_sig_data_);
   ss.str();
 }
 
-BENCHMARK_F(wkt_less_sig, ss_w_precision, Fixture, 30, 1) {
+BENCHMARK_F(wkt_less_sig, ss_w_precision, Fixture, 0, 10) {
   std::stringstream ss;
   ss<<bg::ss_w_precision::wkt(this->less_sig_data_);
   ss.str();
 }
 
-BENCHMARK_F(to_wkt_more_sig, ss_w_precision, Fixture, 30, 1) {
+BENCHMARK_F(to_wkt_more_sig, ss_w_precision, Fixture, 0, 10) {
   bg::ss_w_precision::to_wkt(this->more_sig_data_);
 }
 
-BENCHMARK_F(to_wkt_less_sig, ss_w_precision, Fixture, 30, 1) {
+BENCHMARK_F(to_wkt_less_sig, ss_w_precision, Fixture, 0, 10) {
   bg::ss_w_precision::to_wkt(this->less_sig_data_);
 }
 
 // Benchmarking stringstream without precision set method
 
-BENCHMARK_F(wkt_more_sig, ss_wo_precision, Fixture, 30, 1) {
+BENCHMARK_F(wkt_more_sig, ss_wo_precision, Fixture, 0, 10) {
   std::stringstream ss;
   ss<<bg::ss_wo_precision::wkt(this->more_sig_data_);
   ss.str();
 }
 
-BENCHMARK_F(wkt_less_sig, ss_wo_precision, Fixture, 30, 1) {
+BENCHMARK_F(wkt_less_sig, ss_wo_precision, Fixture, 0, 10) {
   std::stringstream ss;
   ss<<bg::ss_wo_precision::wkt(this->less_sig_data_);
   ss.str();
 }
 
-BENCHMARK_F(to_wkt_more_sig, ss_wo_precision, Fixture, 30, 1) {
+BENCHMARK_F(to_wkt_more_sig, ss_wo_precision, Fixture, 0, 10) {
   bg::ss_wo_precision::to_wkt(this->more_sig_data_);
 }
 
-BENCHMARK_F(to_wkt_less_sig, ss_wo_precision, Fixture, 30, 1) {
+BENCHMARK_F(to_wkt_less_sig, ss_wo_precision, Fixture, 0, 10) {
   bg::ss_wo_precision::to_wkt(this->less_sig_data_);
 }
