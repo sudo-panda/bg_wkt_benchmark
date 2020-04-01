@@ -54,39 +54,25 @@ struct Fixture : celero::TestFixture {
 
 CELERO_MAIN
 
-// Set fixed baseline of 1 us
+// Bselining to_string method
 
-BASELINE_FIXED_F(wkt_more_sig, baseline, Fixture, 0, 100, 1)
-{}
-
-BASELINE_FIXED_F(wkt_less_sig, baseline, Fixture, 0, 100, 1)
-{}
-
-BASELINE_FIXED_F(to_wkt_more_sig, baseline, Fixture, 0, 100, 1)
-{}
-
-BASELINE_FIXED_F(to_wkt_less_sig, baseline, Fixture, 0, 100, 1)
-{}
-
-// Benchmarking to_string method
-
-BENCHMARK_F(wkt_more_sig, to_string, Fixture, 0, 100) {
+BASELINE_F(wkt_more_sig, to_string, Fixture, 0, 100) {
   std::stringstream ss;
   celero::DoNotOptimizeAway(ss<<bg::to_string::wkt(this->more_sig_data_));
   ss.str();
 }
 
-BENCHMARK_F(wkt_less_sig, to_string, Fixture, 0, 100) {
+BASELINE_F(wkt_less_sig, to_string, Fixture, 0, 100) {
   std::stringstream ss;
   celero::DoNotOptimizeAway(ss<<bg::to_string::wkt(this->less_sig_data_));
   celero::DoNotOptimizeAway(ss.str());
 }
 
-BENCHMARK_F(to_wkt_more_sig, to_string, Fixture, 0, 100) {
+BASELINE_F(to_wkt_more_sig, to_string, Fixture, 0, 100) {
   celero::DoNotOptimizeAway(bg::to_string::to_wkt(this->more_sig_data_));
 }
 
-BENCHMARK_F(to_wkt_less_sig, to_string, Fixture, 0, 100) {
+BASELINE_F(to_wkt_less_sig, to_string, Fixture, 0, 100) {
   celero::DoNotOptimizeAway(bg::to_string::to_wkt(this->less_sig_data_));
 }
 
